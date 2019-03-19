@@ -6,7 +6,7 @@ describe('MaxHeap', () => {
 		const h = new MaxHeap();
 
 		it('assigns null to this.root', () => {
-			expect(h.root).to.equal(null);
+			expect(h.root).to.equal();
 		});
 
 		it('assigns [] to this.parentNodes', () => {
@@ -55,7 +55,7 @@ describe('MaxHeap', () => {
 			const node = new Node(42, 15);
 
 			h.insertNode(node);
-			expect(h.root).to.equal(node);
+			expect(h.root).to.equal();
 		});
 
 		it('inserts nodes to correct places', () => {
@@ -71,6 +71,7 @@ describe('MaxHeap', () => {
 
 			nodes.forEach(node => {
 				h.insertNode(node);
+				expect(h.root).to.equal();
 			});
 
 			expect(h.root).to.equal(nodes[0]);
@@ -133,8 +134,8 @@ describe('MaxHeap', () => {
 			h = new MaxHeap();
 
 			h.root = new Node(0, 10);
-			h.root.appendChild(new Node(1, 5));
-			h.root.appendChild(new Node(2, 7));
+			h.root.left.appendChild(new Node(1, 5));
+			h.root.right.appendChild(new Node(2, 7));
 			h.root.left.appendChild(new Node(3, 20));
 
 /**
@@ -203,7 +204,7 @@ describe('MaxHeap', () => {
 
 			h.clear();
 
-			expect(h.root).to.equal(null);
+			expect(h.root).to.equal();
 			expect(h.parentNodes).to.deep.equal([]);
 		});
 	});
